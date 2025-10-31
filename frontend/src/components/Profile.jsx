@@ -121,9 +121,9 @@ const Profile = () => {
                   <AtSign />
                   <span className="pl-1">{userProfile?.username}</span>
                 </Badge>
-                <span>🤯 Learn code with Patel MERN stack style</span>
-                <span>🤯 Turning code into fun</span>
-                <span>🤯 DM for collaboration</span>
+                <span>🤯 </span>
+                <span>🤯</span>
+                <span>🤯 </span>
               </div>
             </div>
           </section>
