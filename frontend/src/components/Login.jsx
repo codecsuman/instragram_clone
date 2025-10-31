@@ -26,7 +26,7 @@ const Login = () => {
     try {
       setLoading(true);
       const res = await axios.post(
-        "http://localhost:8000/api/v1/user/login", // ✅ login API
+        "https://instragram-clone-5.onrender.com/api/v1/user/login", // ✅ login API
         input,
         {
           headers: { "Content-Type": "application/json" },
