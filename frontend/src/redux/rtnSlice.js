@@ -1,34 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const rtnSlice = createSlice({
-    name: "realTimeNotification",
-    initialState: {
-        likeNotification: [], // stores notifications [{ userId, type }]
+    name:'realTimeNotification',
+    initialState:{
+        likeNotification:[], // [1,2,3]
     },
-    reducers: {
-        setLikeNotification: (state, action) => {
-            const { type, userId } = action.payload;
-
-            if (type === "like") {
-                // prevent duplicate notifications from the same user
-                const alreadyExists = state.likeNotification.some(
-                    (item) => item.userId === userId
-                );
-                if (!alreadyExists) {
-                    state.likeNotification.push(action.payload);
-                }
-            } else if (type === "dislike") {
-                // remove notification from that user
-                state.likeNotification = state.likeNotification.filter(
-                    (item) => item.userId !== userId
-                );
+    reducers:{
+        setLikeNotification:(state,action)=>{
+            if(action.payload.type === 'like'){
+                state.likeNotification.push(action.payload);
+            }else if(action.payload.type === 'dislike'){
+                state.likeNotification = state.likeNotification.filter((item)=> item.userId !== action.payload.userId);
             }
-        },
-        clearLikeNotifications: (state) => {
-            state.likeNotification = []; // reset all notifications
-        },
-    },
+        }
+    }
 });
-
-export const { setLikeNotification, clearLikeNotifications } = rtnSlice.actions;
+export const {setLikeNotification} = rtnSlice.actions;
 export default rtnSlice.reducer;

@@ -31,28 +31,29 @@ const EditProfile = () => {
         setInput({ ...input, gender: value });
     }
 
+
     const editProfileHandler = async () => {
         console.log(input);
         const formData = new FormData();
         formData.append("bio", input.bio);
         formData.append("gender", input.gender);
-        if (input.profilePhoto) {
+        if(input.profilePhoto){
             formData.append("profilePhoto", input.profilePhoto);
         }
         try {
             setLoading(true);
-            const res = await axios.post('https://instragram-clone-5.onrender.com/api/v1/user/profile/edit', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
+            const res = await axios.post('https://instaclone-g9h5.onrender.com/api/v1/user/profile/edit', formData,{
+                headers:{
+                    'Content-Type':'multipart/form-data'
                 },
-                withCredentials: true
+                withCredentials:true
             });
-            if (res.data.success) {
+            if(res.data.success){
                 const updatedUserData = {
                     ...user,
-                    bio: res.data.user?.bio,
-                    profilePicture: res.data.user?.profilePicture,
-                    gender: res.data.user.gender
+                    bio:res.data.user?.bio,
+                    profilePicture:res.data.user?.profilePicture,
+                    gender:res.data.user.gender
                 };
                 dispatch(setAuthUser(updatedUserData));
                 navigate(`/profile/${user?._id}`);
@@ -61,12 +62,11 @@ const EditProfile = () => {
 
         } catch (error) {
             console.log(error);
-            toast.error(error.response.data.message); // ✅ fixed typo
-        } finally {
+            toast.error(error.response.data.messasge);
+        } finally{
             setLoading(false);
         }
     }
-
     return (
         <div className='flex max-w-2xl mx-auto pl-10'>
             <section className='flex flex-col gap-6 w-full my-8'>

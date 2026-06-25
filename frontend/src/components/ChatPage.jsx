@@ -17,7 +17,7 @@ const ChatPage = () => {
 
     const sendMessageHandler = async (receiverId) => {
         try {
-            const res = await axios.post(`https://instragram-clone-5.onrender.com/api/v1/message/send/${receiverId}`, { textMessage }, {
+            const res = await axios.post(`https://instaclone-g9h5.onrender.com/api/v1/message/send/${receiverId}`, { textMessage }, {
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -36,7 +36,7 @@ const ChatPage = () => {
         return () => {
             dispatch(setSelectedUser(null));
         }
-    }, []);
+    },[]);
 
     return (
         <div className='flex ml-[16%] h-screen'>
